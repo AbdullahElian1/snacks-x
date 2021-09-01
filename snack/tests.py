@@ -52,4 +52,12 @@ class ThingTests(TestCase):
 
 
 
+    def test_snack_update_view_redirect(self):
+        response = self.client.post(
+            reverse("snack_update", args="1"),
+            {"title": "Updated name","description":"3","purchaser":self.user.id}
+        )
+
+        self.assertRedirects(response, reverse("snack_detail", args="1"))
+
     
