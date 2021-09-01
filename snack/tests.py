@@ -18,4 +18,9 @@ class ThingTests(TestCase):
     def test_string_representation(self):
         self.assertEqual(str(self.snack), "cheese")
 
+    def test_snack_content(self):
+        self.assertEqual(f"{self.snack.title}", "cheese")
+        self.assertEqual(f"{self.snack.purchaser}", "admin1")
+        self.assertEqual(f"{self.snack.description}", "good")
+
     
