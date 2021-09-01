@@ -60,4 +60,6 @@ class ThingTests(TestCase):
 
         self.assertRedirects(response, reverse("snack_detail", args="1"))
 
-    
+    def test_snack_delete_view(self):
+        response = self.client.get(reverse("snack_delete", args="1"))
+        self.assertEqual(response.status_code, 200)
