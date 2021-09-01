@@ -37,4 +37,19 @@ class ThingTests(TestCase):
         self.assertContains(response, "purchaser: admin1")
         self.assertTemplateUsed(response, "snacks/snack_detail.html")
 
+    def test_snack_create_view(self):
+        response = self.client.post(
+            reverse("snack_create"),
+            {
+                "title": "admin2",
+                "description": "wow",
+                "purchaser": self.user.id,
+            }, follow=True
+        )
+
+        self.assertRedirects(response, reverse("snack_detail", args="2"))
+        self.assertContains(response, "Details about admin2")
+
+
+
     
