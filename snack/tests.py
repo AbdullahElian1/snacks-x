@@ -23,4 +23,10 @@ class ThingTests(TestCase):
         self.assertEqual(f"{self.snack.purchaser}", "admin1")
         self.assertEqual(f"{self.snack.description}", "good")
 
+    def test_snack_list_view(self):
+        response = self.client.get(reverse("snacks_list"))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "cheese")
+        self.assertTemplateUsed(response, "snacks/snack_list.html")
+
     
