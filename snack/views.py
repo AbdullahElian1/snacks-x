@@ -20,3 +20,7 @@ class SnackUpdateView(UpdateView):
     template_name= 'snack_update.html'
     model= Snack
     fields = ['title', 'purchaser', 'description']
+class SnackDeleteView(DeleteView):
+    template_name= 'snack_delete.html'
+    model= Snack
+    success_url = reverse_lazy('snacks_list')
