@@ -29,4 +29,12 @@ class ThingTests(TestCase):
         self.assertContains(response, "cheese")
         self.assertTemplateUsed(response, "snacks/snack_list.html")
 
+    def test_snack_detail_view(self):
+        response = self.client.get(reverse("snack_detail", args="1"))
+        no_response = self.client.get("/100000/")
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(no_response.status_code, 404)
+        self.assertContains(response, "purchaser: admin1")
+        self.assertTemplateUsed(response, "snacks/snack_detail.html")
+
     
